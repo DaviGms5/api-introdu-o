@@ -2,7 +2,8 @@
 import pkg from "pg";
 //bd.js
 //bd.js
-export { selectUsuarios, selectUsuario, insertUsuario };
+//bd.js
+export { selectUsuarios, selectUsuario, insertUsuario }; 
 const { Pool } = pkg;
 
 async function connect() 
@@ -15,8 +16,8 @@ async function connect()
 }
 
 //bd.js
-async function insertUsuario(data) 
-{
+//bd.js
+async function insertUsuario(data) {
   const client = await connect();
   const query = "INSERT INTO usuario (nome,senha,email) VALUES ($1,$2,$3) ";
   const usuario = [data.nome, data.senha, data.email];
