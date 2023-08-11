@@ -3,7 +3,6 @@ import pkg from "pg";
 //bd.js
 //bd.js
 //bd.js
-export { selectUsuarios, selectUsuario, insertUsuario }; 
 const { Pool } = pkg;
 
 async function connect() 
@@ -40,4 +39,5 @@ async function selectUsuarios()
   const res = await client.query("SELECT * FROM usuario");
   return res.rows;
 }
+export { selectUsuarios, selectUsuario, insertUsuario }; 
 
