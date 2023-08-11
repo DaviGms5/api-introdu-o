@@ -3,7 +3,6 @@ import pkg from "pg";
 //bd.js
 //bd.js
 export { selectUsuarios, selectUsuario, insertUsuario };
-export { selectUsuarios, selectUsuario };
 const { Pool } = pkg;
 
 async function connect() 
