@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 //index.js
 //index.js
-import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario } from "./bd.js";
+//index.js
+import { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario } from "./bd.js";
 dotenv.config();
 
 const app = express(); // Instancia o Express
@@ -11,6 +12,29 @@ const port = 3000; // Define a porta
 //index.js
 
 app.use(express.json());
+
+//index.js
+app.patch("/usuario", async (req, res) => 
+{
+  console.log("Rota PATCH /usuario solicitada");
+  try 
+  {
+    const usuario = await selectUsuario(req.body.id);
+    if (usuario.length > 0) 
+    {
+      await updateUsuario(req.body);
+      res.status(200).json({ message: "Usuário atualizado com sucesso!" });
+    } 
+    
+    else res.status(404).json({ message: "Usuário não encontrado!" });
+  } 
+  
+  catch (error) 
+  {
+    console.log(error);
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
