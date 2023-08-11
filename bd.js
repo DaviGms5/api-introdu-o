@@ -1,6 +1,8 @@
 //bd.js
 import pkg from "pg";
 //bd.js
+//bd.js
+export { selectUsuarios, selectUsuario, insertUsuario };
 export { selectUsuarios, selectUsuario };
 const { Pool } = pkg;
 
@@ -11,6 +13,15 @@ async function connect()
     connectionString: process.env.URL_BD,
   });
   return pool.connect();
+}
+
+//bd.js
+async function insertUsuario(data) 
+{
+  const client = await connect();
+  const query = "INSERT INTO usuario (nome,senha,email) VALUES ($1,$2,$3) ";
+  const usuario = [data.nome, data.senha, data.email];
+  await client.query(query, usuario);
 }
 
 //bd.js
