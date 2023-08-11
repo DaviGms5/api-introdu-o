@@ -15,6 +15,14 @@ async function connect()
 }
 
 //bd.js
+async function deleteUsuario(id) 
+{
+  const client = await connect();
+  const query = "DELETE FROM usuario WHERE id = $1";
+  await client.query(query, [id]);
+}
+
+//bd.js
 //bd.js
 async function insertUsuario(data) {
   const client = await connect();
@@ -39,5 +47,5 @@ async function selectUsuarios()
   const res = await client.query("SELECT * FROM usuario");
   return res.rows;
 }
-export { selectUsuarios, selectUsuario, insertUsuario }; 
-
+//bd.js
+export { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario };
