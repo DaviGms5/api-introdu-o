@@ -1,5 +1,5 @@
 import { Router } from "express";
-import verificarAutenticacao from "../middlewares/autenticacao.js";
+import verificarAutenticacao from "../middleware/autenticacao.js";
 import {
   selectUsuario,
   selectUsuarios,
@@ -12,7 +12,7 @@ const router = Router();
 
 
 
-router.get("/usuario", async (req, res) => {
+router.get("/usuario, verificarAutenticacao", async (req, res) => {
   console.log("Rota GET /usuario solicitada");
   try {
     const usuarios = await selectUsuarios();
