@@ -14,6 +14,16 @@ async function connect()
   return pool.connect();
 }
 
+// src/db/index.js
+async function autenticarUsuario(email, senha) 
+{
+  const client = await connect();
+  const query = "SELECT * FROM usuario WHERE email = $1 AND senha = $2";
+  const usuario = [email, senha];
+  const res = await client.query(query, usuario);
+  return res.rows[0];
+}
+
 //bd.js
 async function updateUsuario(data) 
 {
@@ -58,4 +68,4 @@ async function selectUsuarios()
   return res.rows;
 }
 //bd.js
-export { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario };
+export { selectUsuarios, selectUsuario, insertUsuario, deleteUsuario, updateUsuario, autenticarUsuario};
