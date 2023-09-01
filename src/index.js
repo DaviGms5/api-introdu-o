@@ -10,6 +10,10 @@ const port = 3000;                  // Define a porta
 
 app.use(express.json());
 
+app.use(express.urlencoded({ extended: true }));
+app.use(roteadorUsuario);
+app.use(roteadorLogin);
+
 app.get("/", (req, res) => {        // Cria a rota da raiz do projeto
   res.json({
     nome: "Davi Gomes Mendes",      // Substitua pelo seu nome
@@ -21,5 +25,3 @@ app.listen(port, () => {            // Um socket para "escutar" as requisições
   console.log(`Serviço escutando na porta:  ${port}`);
 });
 
-app.use(roteadorUsuario);
-app.use(roteadorLogin);
