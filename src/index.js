@@ -8,8 +8,9 @@ dotenv.config();
 const app = express();              // Instancia o Express
 const port = 3000;                  // Define a porta
 
-app.use(roteadorUsuario);
 app.use(roteadorLogin);
+app.use(roteadorUsuario);
+
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
